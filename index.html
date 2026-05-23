@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Gerador de Imagens IA</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #121212; color: white; padding: 20px; text-align: center; }
+        .container { max-width: 500px; margin: auto; background: #1e1e1e; padding: 20px; border-radius: 10px; }
+        input, textarea, button { width: 100%; padding: 10px; margin: 8px 0; border-radius: 5px; border: none; box-sizing: border-box; }
+        input, textarea { background: #333; color: white; }
+        button { background: #00adb5; color: white; font-weight: bold; cursor: pointer; }
+        #resultado { margin-top: 20px; max-width: 100%; border-radius: 5px; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Gerador de Imagens IA</h2>
+    
+    <label>URL do Checkpoint (.safetensors):</label>
+    <input type="text" id="checkpointUrl" placeholder="Cole o link direto do modelo">
+
+    <label>URL do LoRA (.safetensors):</label>
+    <input type="text" id="loraUrl" placeholder="Cole o link direto do LoRA (Opcional)">
+
+    <label>Seu Comando (Prompt):</label>
+    <textarea id="prompt" placeholder="Ex: A futuristic city, 4k, cyberpunk"></textarea>
+
+    <button onclick="gerarImagem()">Gerar Imagem</button>
+
+    <div id="status">Status: Aguardando comandos...</div>
+    <img id="resultado" src="" alt="Imagem Gerada">
+</div>
+
+<script>
+    // Esse script vai enviar os links e o prompt para o Google Colab futuramente
+    function gerarImagem() {
+        const checkpoint = document.getElementById('checkpointUrl').value;
+        const lora = document.getElementById('loraUrl').value;
+        const prompt = document.getElementById('prompt').value;
+        const status = document.getElementById('status');
+
+        if(!checkpoint || !prompt) {
+            alert("Por favor, preencha o Checkpoint e o Prompt!");
+            return;
+        }
+
+        status.innerText = "Status: Enviando dados para o servidor (Colab)...";
+        
+        // Aqui conectaremos a API do Colab no próximo passo!
+        console.log({ checkpoint, lora, prompt });
+    }
+</script>
+
+</body>
+</html>
